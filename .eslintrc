@@ -1,0 +1,18 @@
+{
+  extends: "airbnb",
+  rules: {
+    "newline-per-chained-call": ['error', {"ignoreChainWithDepth": 1}],
+  },
+  "root": true,
+  "settings": {
+    "import/resolver": {
+      "jspm": {
+        "moduleDirectory": "jspm_packages"
+      },
+      "node": true
+    }
+  },
+  env: {
+    browser: true
+  }
+}

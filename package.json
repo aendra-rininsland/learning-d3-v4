@@ -1,0 +1,49 @@
+{
+  "name": "learning-d3-v4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint lib/chapter1/chapter1.js --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aendrew/learning-d3-v4.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aendrew/learning-d3-v4/issues"
+  },
+  "homepage": "https://github.com/aendrew/learning-d3-v4",
+  "devDependencies": {
+    "babel-eslint": "^6.1.2",
+    "eslint": "^3.4.0",
+    "eslint-config-airbnb": "^10.0.1",
+    "eslint-plugin-import": "^1.14.0",
+    "eslint-plugin-jsx-a11y": "^2.2.1",
+    "eslint-plugin-react": "^6.2.0",
+    "jspm": "^0.16.45"
+  },
+  "jspm": {
+    "dependencies": {
+      "css": "npm:jspm-loader-css@^1.1.0",
+      "d3": "npm:d3@^4.2.2",
+      "d3-selection": "npm:d3-selection@^1.0.2"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    },
+    "buildConfig": {
+      "transpileES6": true,
+      "minify": true
+    }
+  },
+  "dependencies": {
+    "d3": "^4.2.2"
+  }
+}
