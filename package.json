@@ -31,7 +31,13 @@
     "dependencies": {
       "css": "npm:jspm-loader-css@^1.1.0",
       "d3": "npm:d3@^4.2.2",
-      "d3-selection": "npm:d3-selection@^1.0.2"
+      "d3-array": "npm:d3-array@^1.0.1",
+      "d3-axis": "npm:d3-axis@^1.0.3",
+      "d3-collection": "npm:d3-collection@^1.0.1",
+      "d3-dsv": "npm:d3-dsv@^1.0.1",
+      "d3-scale": "npm:d3-scale@^1.0.3",
+      "d3-selection": "npm:d3-selection@^1.0.2",
+      "d3-transition": "npm:d3-transition@^1.0.2"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
