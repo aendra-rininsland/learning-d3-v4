@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint lib/chapter1/chapter1.js --fix"
+    "lint": "eslint lib/",
+    "start": "jspm-server"
   },
   "repository": {
     "type": "git",
@@ -20,12 +21,15 @@
   "homepage": "https://github.com/aendrew/learning-d3-v4",
   "devDependencies": {
     "babel-eslint": "^6.1.2",
-    "eslint": "^3.4.0",
-    "eslint-config-airbnb": "^10.0.1",
-    "eslint-plugin-import": "^1.14.0",
-    "eslint-plugin-jsx-a11y": "^2.2.1",
-    "eslint-plugin-react": "^6.2.0",
-    "jspm": "^0.16.45"
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "eslint": "^3.5.0",
+    "eslint-config-airbnb": "^11.1.0",
+    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-import": "^1.15.0",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.3.0",
+    "jspm": "^0.16.45",
+    "jspm-server": "^1.0.1"
   },
   "jspm": {
     "dependencies": {
@@ -50,7 +54,6 @@
     }
   },
   "dependencies": {
-    "d3": "^4.2.2",
-    "d3-selection": "^1.0.2"
+    "d3": "^4.2.2"
   }
 }
