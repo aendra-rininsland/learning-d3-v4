@@ -3,16 +3,21 @@ html, body {
   margin: 0;
 }
 
-.axis path, .axis line {
-  fill: none;
-  stroke: #eee;
-  shape-rendering: crispEdges;
-}
-
-.axis text {
-  font-size: 11px;
-}
+/* @TODO Update ch. 1 to remove axis stylings */
 
 .bar {
   fill: steelblue;
+}
+
+
+.trippy {
+  animation: wheee 3s infinite;
+}
+
+@keyframes wheee {
+  0%   {stroke: red;}
+  25%  {stroke: yellow;}
+  50%  {stroke: blue;}
+  75%  {stroke: green;}
+  100% {stroke: red;}
 }
