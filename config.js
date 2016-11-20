@@ -1,5 +1,4 @@
 System.config({
-  trace: true,
   baseURL: "./",
   defaultJSExtensions: true,
   transpiler: "babel",
@@ -13,12 +12,16 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
+  trace: true,
   separateCSS: true,
   rootURL: "./public",
 
   meta: {
     "*.css": {
       "loader": "css"
+    },
+    "*.json": {
+      "loader": "json"
     }
   },
 
@@ -35,6 +38,9 @@ System.config({
     "d3-scale": "npm:d3-scale@1.0.3",
     "d3-selection": "npm:d3-selection@1.0.2",
     "d3-transition": "npm:d3-transition@1.0.2",
+    "earth-topojson": "npm:earth-topojson@1.0.0",
+    "plugin-babel": "npm:systemjs-plugin-babel@0.0.17",
+    "rxjs": "npm:rxjs@5.0.0-rc.1",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
     },
@@ -86,7 +92,7 @@ System.config({
       "base64-js": "npm:base64-js@0.0.8",
       "child_process": "github:jspm/nodelibs-child_process@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "ieee754": "npm:ieee754@1.1.6",
+      "ieee754": "npm:ieee754@1.1.8",
       "isarray": "npm:isarray@1.0.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -227,6 +233,10 @@ System.config({
     "npm:debounce@1.0.0": {
       "date-now": "npm:date-now@1.0.1"
     },
+    "npm:earth-topojson@1.0.0": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.2"
+    },
     "npm:fastparse@1.1.1": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -238,6 +248,9 @@ System.config({
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:isarray@1.0.0": {
+      "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
     "npm:js-base64@2.1.9": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
@@ -314,6 +327,11 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:rxjs@5.0.0-rc.1": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "symbol-observable": "npm:symbol-observable@1.0.4"
+    },
     "npm:source-map@0.5.6": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -341,7 +359,8 @@ System.config({
     },
     "npm:util@0.10.3": {
       "inherits": "npm:inherits@2.0.1",
-      "process": "github:jspm/nodelibs-process@0.1.2"
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
     "npm:vm-browserify@0.0.4": {
       "indexof": "npm:indexof@0.0.1"

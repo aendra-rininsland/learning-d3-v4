@@ -2,7 +2,7 @@
   "name": "learning-d3-v4",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint lib/",
@@ -22,13 +22,15 @@
   "devDependencies": {
     "babel-eslint": "^6.1.2",
     "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2017": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
     "eslint": "^3.5.0",
     "eslint-config-airbnb": "^11.1.0",
     "eslint-plugin-babel": "^3.3.0",
     "eslint-plugin-import": "^1.15.0",
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.3.0",
-    "jspm": "^0.16.45",
+    "jspm": "^0.16.47",
     "jspm-server": "^1.0.1"
   },
   "jspm": {
@@ -41,16 +43,35 @@
       "d3-dsv": "npm:d3-dsv@^1.0.1",
       "d3-scale": "npm:d3-scale@^1.0.3",
       "d3-selection": "npm:d3-selection@^1.0.2",
-      "d3-transition": "npm:d3-transition@^1.0.2"
+      "d3-transition": "npm:d3-transition@^1.0.2",
+      "earth-topojson": "npm:earth-topojson@^1.0.0",
+      "rxjs": "npm:rxjs@^5.0.0-rc.1"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "core-js": "npm:core-js@^1.1.4"
+      "core-js": "npm:core-js@^1.1.4",
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.17"
     },
     "buildConfig": {
       "transpileES6": true,
       "minify": true
+    },
+    "overrides": {
+      "npm:babel-runtime@5.8.38": {
+        "main": false,
+        "dependencies": {},
+        "optionalDependencies": {
+          "core-js": "^1.2.0"
+        }
+      },
+      "npm:inherits@2.0.1": {
+        "ignore": [
+          "test.js",
+          "node_modules",
+          "node_modules"
+        ]
+      }
     }
   },
   "dependencies": {
