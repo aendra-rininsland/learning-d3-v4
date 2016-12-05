@@ -30,6 +30,7 @@
     "eslint-plugin-import": "^1.15.0",
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.3.0",
+    "html-webpack-plugin": "^2.24.1",
     "json-loader": "^0.5.4",
     "style-loader": "^0.13.1",
     "webpack": "beta",
@@ -37,7 +38,9 @@
   },
   "dependencies": {
     "d3": "^4.2.2",
+    "d3-dsv": "^1.0.3",
     "earth-topojson": "^1.0.0",
-    "topojson": "^2.0.0"
+    "topojson": "^2.0.0",
+    "topojson-client": "^2.1.0"
   }
 }
