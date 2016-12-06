@@ -12,14 +12,7 @@
     "no-unused-vars": 1,
   },
   "root": true,
-  "settings": {
-    "import/resolver": {
-      "jspm": {
-        "moduleDirectory": "jspm_packages"
-      },
-      "node": true
-    }
-  },
+  "settings": {},
   env: {
     browser: true
   }
