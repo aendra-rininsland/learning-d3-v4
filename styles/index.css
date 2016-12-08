@@ -53,10 +53,27 @@ html, body {
   stroke: goldenrod;
 }
 
-.bar {
+/*.bar {
   transition: all 1s ease-out;
-}
+}*/
 
 .selected {
   fill: red;
+}
+
+.buttons {
+  display: flex;
+}
+
+.buttons button {
+  flex-grow: 1;
+  color: white;
+  background: black;
+  border: 1px solid white;
+}
+
+.words {
+  padding: .5em;
+  text-align: center;
+  font-size: 1.5em;
 }
