@@ -10,6 +10,8 @@
     "generator-star-spacing": 0,
     "no-console": 0,
     "no-unused-vars": 1,
+    "no-plusplus": 0,
+    "max-len": 1,
   },
   "root": true,
   "settings": {},
