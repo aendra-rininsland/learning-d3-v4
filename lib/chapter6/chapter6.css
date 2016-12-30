@@ -7,10 +7,10 @@
   font-family: sans-serif;
 }
 
-.node rect {
+/*.node rect {
   stroke: grey;
   stroke-width: 1px;
-}
+}*/
 
 #tooltip {
   font-family: sans-serif;

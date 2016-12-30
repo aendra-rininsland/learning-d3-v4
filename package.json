@@ -39,6 +39,7 @@
   "dependencies": {
     "d3": "^4.2.2",
     "d3-dsv": "^1.0.3",
+    "d3-svg-legend": "^2.19.0",
     "earth-topojson": "^1.0.0",
     "rxjs": "^5.0.0-rc.4",
     "topojson": "^2.0.0",
