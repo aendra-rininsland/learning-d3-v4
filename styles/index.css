@@ -1,14 +1,18 @@
 html, body {
   padding: 0;
   margin: 0;
+  font-family: sans-serif;
 }
 
-/* @TODO Update ch. 1 to remove axis stylings */
+/* @TODO Update ch. 1 to remove axis stylings(?) and add font decs */
+
+text {
+  font-family: sans-serif;
+}
 
 .bar {
   fill: steelblue;
 }
-
 
 .trippy {
   animation: wheee 3s infinite;
