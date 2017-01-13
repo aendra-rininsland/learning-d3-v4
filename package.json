@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint lib/",
+    "server": "webpack && node build/server.js",
     "start": "webpack-dev-server --inline"
   },
   "repository": "https://github.com/aendrew/learning-d3-v4.git",
@@ -38,6 +39,7 @@
     "webpack-dev-server": "^2.1.0-beta.11"
   },
   "dependencies": {
+    "canvas-prebuilt": "^1.6.0",
     "d3": "^4.2.2",
     "d3-dsv": "^1.0.3",
     "d3-svg-legend": "^2.19.0",

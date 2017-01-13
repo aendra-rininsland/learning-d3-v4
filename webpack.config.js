@@ -50,19 +50,20 @@ module.exports = [
   },
 },
 {
-  // name: 'server',
+  name: 'server',
   entry: {
-    app: ['./lib/server.js'], // This is the main file that gets loaded first; the "bootstrap", if you will.
+    app: ['./lib/chapter8/index.js'],
   },
+
   target: 'node',
 
   output: { // Transpiled and bundled output gets put in `build/server.bundle.js`.
     path: path.resolve(__dirname, 'build'),
-    filename: 'server.bundle.js',
+    filename: 'server.js',
   },
 
   externals: {
-    canvas: 'commonjs canvas'
+    'canvas-prebuilt': 'commonjs canvas-prebuilt'
   },
 
   devtool: 'inline-source-map',
