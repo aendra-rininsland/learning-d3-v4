@@ -39,7 +39,7 @@ module.exports = [
         {
           test: /\.ts?$/, // Another convention is to use the .es6 filetype, but you then
           // have to supply that explicitly in import statements, which isn't cool.
-          exclude: [/(node_modules|bower_components)/, 'lib/chapter9/getSankeyData.ts'],
+          exclude: [/(node_modules|bower_components)/],
           loader: 'ts-loader',
           // loaders: ['babel-loader', 'ts-loader'],
         },

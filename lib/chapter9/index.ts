@@ -16,10 +16,10 @@ const partyColors = {
   LIB: '#FDBB30',
   UKIP: '#70147A',
   Green: '#6AB023',
-  Other: '#cccccc',
+  Other: '#CCCCCC',
 };
 
-async function typescriptSankey() {
+export async function typescriptSankey() {
   const sankeyData: SankeyData = await (await fetch('data/uk-election-sankey.json')).json();
   const width = chart.width;
   const height = chart.height;
@@ -32,8 +32,8 @@ async function typescriptSankey() {
       defs.append('linearGradient')
         .attr('id', `${d}-${v}`)
         .call((gradient) => {
-            gradient.append('stop').attr('offset', '0%').attr('style', `stop-color:${partyColors[d]};stop-opacity:0.8`);
-            gradient.append('stop').attr('offset', '100%').attr('style', `stop-color:${partyColors[v]};stop-opacity:0.8`);
+            gradient.append('stop').attr('offset', '0%').attr('style', `stop-color:${partyColors[d]}; stop-opacity:0.8`);
+            gradient.append('stop').attr('offset', '100%').attr('style', `stop-color:${partyColors[v]}; stop-opacity:0.8`);
         });
     });
   });
@@ -44,18 +44,18 @@ async function typescriptSankey() {
     .nodePadding(10)
     .nodes(sankeyData.nodes)
     .links(sankeyData.links)
-    .layout(32);
+    .layout(1);
 
   const path = sankeyGenerator.link();
 
-  const link = svg.append("g")
-    .selectAll(".link")
+  const link = svg.append('g')
+    .selectAll('.link')
       .data(sankeyData.links)
       .enter().append('path')
       .attr('class', 'link')
       .attr('d', path)
       .attr('fill', 'none')
-      .attr('stroke', (d: any) => {
+      .attr('stroke', d => {
         const source = d.source.name.replace(/(2010|2015)/, '');
         const target = d.target.name.replace(/(2010|2015)/, '');
         return `url(#${source}-${target})`;
@@ -63,34 +63,58 @@ async function typescriptSankey() {
       .style('stroke-width', d => Math.max(1, d.dy))
       .sort((a, b) => b.dy - a.dy);
 
-      // link.append('title')
-      //   .text(function(d) {
-      //     return d.source.name + " → " + d.target.name + "\n" + format(d.value);
-      //   });
+  const node = svg.append('g').selectAll('.node')
+    .data(sankeyData.nodes)
+    .enter().append("g")
+    .attr('class', 'node')
+    .attr('transform', d => `translate(${d.x},${d.y})`);
 
-      const node = svg.append('g').selectAll('.node')
-        .data(sankeyData.nodes)
-        .enter().append("g")
-        .attr('class', 'node')
-        .attr('transform', d => `translate(${d.x},${d.y})`);
+  node.append('rect')
+    .attr('height', d => d.dy)
+    .attr('width', sankeyGenerator.nodeWidth())
+    .style('fill', d => partyColors[d.name.replace(/(2010|2015)/, '')])
+    .append('title')
+    .text(d => `${d.name}\nSeats: ${d.value}`);
 
-      node.append('rect')
-        .attr('height', d => d.dy)
-        .attr('width', sankeyGenerator.nodeWidth())
-        .style('fill', d => partyColors[d.name.replace(/(2010|2015)/, '')])
-        .append('title')
-        .text(d => `${d.name}\nSeats: ${d.value}`);
+  node.append('text')
+    .attr('x', -6)
+    .attr('y', d => d.dy / 2)
+    .attr('dy', '.35em')
+    .attr('text-anchor', 'end')
+    .attr('transform', null)
+    .text(d => d.name)
+    .filter(d => d.x < width / 2)
+    .attr('x', 6 + sankeyGenerator.nodeWidth())
+    .attr('text-anchor', 'start');
 
-      node.append('text')
-        .attr('x', -6)
-        .attr('y', d => d.dy / 2)
-        .attr('dy', '.35em')
-        .attr('text-anchor', 'end')
-        .attr('transform', null)
-        .text(d => d.name)
-        .filter(d => d.x < width / 2)
-        .attr('x', 6 + sankeyGenerator.nodeWidth())
-        .attr('text-anchor', 'start');
+  const select = (item) => {
+    const filteredLinks = sankeyData.links.filter(d => d.source.name === item);
+    const filteredNodes = sankeyData.nodes.filter(d => d.name === item || d.name.match(/2015$/));
+
+    svg.selectAll('.link')
+      .attr('opacity', d => d.source.name === item ? 1 : .3);
+
+    svg.selectAll('.node')
+      .attr('opacity', d => (d.name === item || d.name.match(/2015$/)) ? 1 : .3);
+  }
+
+  const deselect = () => {
+    svg.selectAll('.link')
+      .attr('opacity', 1);
+
+    svg.selectAll('.node')
+      .attr('opacity', 1);
+  }
+
+  let current = null;
+  node.on('click', e => {
+    if (current === e.name) {
+      deselect();
+    } else {
+      current = e.name;
+      select(current);
+    }
+  });
 }
 
 typescriptSankey();

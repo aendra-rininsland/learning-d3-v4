@@ -11,7 +11,7 @@ import { resolve } from 'path';
 import { readFileSync, writeFileSync } from 'fs';
 
 async function generateData() {
-  const parser = d3.dsvFormat(';');
+  const parser = d3.dsvFormat(',');
   const csv2010 = readFileSync('../electdata_2010.csv', {encoding: 'utf8'});
   const data2010 = parser.parse(csv2010);
   data2010.forEach((d: any) => {

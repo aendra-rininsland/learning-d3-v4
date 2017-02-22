@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint lib/",
     "server": "webpack && node build/server.js",
-    "start": "webpack-dev-server --inline"
+    "start": "webpack-dev-server --inline",
+    "start-tests": "webpack-dev-server --config webpack.test.config.js 'mocha-loader!./lib/chapter9/index.spec.js' --hot --inline"
   },
   "repository": "https://github.com/aendrew/learning-d3-v4.git",
   "keywords": [],
@@ -24,6 +25,7 @@
     "babel-plugin-transform-runtime": "^6.15.0",
     "babel-preset-es2017": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
+    "chai": "^3.5.0",
     "css-loader": "^0.26.0",
     "eslint": "^3.5.0",
     "eslint-config-airbnb": "^11.1.0",
@@ -34,6 +36,8 @@
     "eslint-plugin-react": "^6.3.0",
     "html-webpack-plugin": "^2.24.1",
     "json-loader": "^0.5.4",
+    "mocha": "^3.2.0",
+    "mocha-loader": "^1.1.0",
     "source-map-support": "^0.4.8",
     "style-loader": "^0.13.1",
     "ts-loader": "^2.0.0",
