@@ -52,7 +52,7 @@ export default async function typescriptSankey() {
     .data(sankeyData.links)
     .enter()
     .append('g')
-    .attr('class', 'link');
+    .classed('link', true);
 
   link.append('path')
     .attr('d', path)
@@ -62,14 +62,13 @@ export default async function typescriptSankey() {
       const target = d.target.name.replace(/(2010|2015)/, '');
       return `url(#${source}-${target})`;
     })
-    .style('stroke-width', d => Math.max(1, d.dy))
-    .sort((a, b) => b.dy - a.dy);
+    .style('stroke-width', d => Math.max(1, d.dy));
 
   const node = svg.selectAll('.node')
     .data(sankeyData.nodes)
     .enter()
     .append('g')
-    .attr('class', 'node')
+    .classed('node', true)
     .attr('transform', d => `translate(${d.x},${d.y})`);
 
   node.append('rect')
@@ -90,38 +89,43 @@ export default async function typescriptSankey() {
     .attr('x', 6 + sankeyGenerator.nodeWidth())
     .attr('text-anchor', 'start');
 
-  const select = (item) => {
-    const filteredLinks = sankeyData.links.filter(d => d.source.name === item);
-    const filteredNodes = sankeyData.nodes.filter(d => d.name === item || d.name.match(/2015$/));
+  node.selectAll('rect[height="0"]')
+    .each(function(d){
+      this.parentNode.remove();
+    });
 
-    svg.selectAll('.link')
-      .attr('opacity', d => d.source.name === item ? 1 : .3);
+  const select = (item: string|null) => {
+    if (item) {
+      const filteredLinks = sankeyData.links.filter(d => d.source.name === item);
+      const filteredNodes = sankeyData.nodes.filter(d => d.name === item || d.name.match(/2015$/));
 
-    svg.selectAll('.node')
-      .attr('opacity', d => (d.name === item || d.name.match(/2015$/)) ? 1 : .3);
-  }
+      svg.selectAll('.link')
+        .attr('opacity', d => d.source.name === item ? 1 : .3);
 
-  const deselect = () => {
-    svg.selectAll('.link')
-      .attr('opacity', 1);
+      svg.selectAll('.node')
+        .attr('opacity', d => (d.name === item || d.name.match('2015')) ? 1 : .3);
+    } else {
+      svg.selectAll('.link')
+        .attr('opacity', 1);
 
-    svg.selectAll('.node')
-      .attr('opacity', 1);
+      svg.selectAll('.node')
+        .attr('opacity', 1);
+    }
   }
 
   let current = null;
   node.on('click', e => {
     if (current === e.name) {
-      deselect();
+      current = null;
     } else {
       current = e.name;
-      select(current);
     }
+
+    select(current);
   });
 
   return {
     select,
-    deselect,
     node,
     link,
     data: sankeyData,

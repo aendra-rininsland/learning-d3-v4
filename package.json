@@ -8,7 +8,7 @@
     "lint": "eslint lib/",
     "server": "webpack && node build/server.js",
     "start": "webpack-dev-server --inline",
-    "start-tests": "webpack-dev-server --config webpack.test.config.js 'mocha-loader!./lib/chapter9/index.spec.js' --hot --inline"
+    "start-tests": "webpack-dev-server --config webpack.test.config.js 'mocha-loader!./lib/chapter9/index.spec.js' --inline"
   },
   "repository": "https://github.com/aendrew/learning-d3-v4.git",
   "keywords": [],
