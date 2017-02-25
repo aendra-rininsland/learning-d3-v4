@@ -19,7 +19,7 @@ const partyColors = {
   Other: '#CCCCCC',
 };
 
-export async function typescriptSankey() {
+export default async function typescriptSankey() {
   const sankeyData: SankeyData = await (await fetch('data/uk-election-sankey.json')).json();
   const width = chart.width;
   const height = chart.height;
@@ -48,24 +48,27 @@ export async function typescriptSankey() {
 
   const path = sankeyGenerator.link();
 
-  const link = svg.append('g')
-    .selectAll('.link')
-      .data(sankeyData.links)
-      .enter().append('path')
-      .attr('class', 'link')
-      .attr('d', path)
-      .attr('fill', 'none')
-      .attr('stroke', d => {
-        const source = d.source.name.replace(/(2010|2015)/, '');
-        const target = d.target.name.replace(/(2010|2015)/, '');
-        return `url(#${source}-${target})`;
-      })
-      .style('stroke-width', d => Math.max(1, d.dy))
-      .sort((a, b) => b.dy - a.dy);
+  const link = svg.selectAll('.link')
+    .data(sankeyData.links)
+    .enter()
+    .append('g')
+    .attr('class', 'link');
 
-  const node = svg.append('g').selectAll('.node')
+  link.append('path')
+    .attr('d', path)
+    .attr('fill', 'none')
+    .attr('stroke', d => {
+      const source = d.source.name.replace(/(2010|2015)/, '');
+      const target = d.target.name.replace(/(2010|2015)/, '');
+      return `url(#${source}-${target})`;
+    })
+    .style('stroke-width', d => Math.max(1, d.dy))
+    .sort((a, b) => b.dy - a.dy);
+
+  const node = svg.selectAll('.node')
     .data(sankeyData.nodes)
-    .enter().append("g")
+    .enter()
+    .append('g')
     .attr('class', 'node')
     .attr('transform', d => `translate(${d.x},${d.y})`);
 
@@ -115,6 +118,12 @@ export async function typescriptSankey() {
       select(current);
     }
   });
-}
 
-typescriptSankey();
+  return {
+    select,
+    deselect,
+    node,
+    link,
+    data: sankeyData,
+  };
+}
