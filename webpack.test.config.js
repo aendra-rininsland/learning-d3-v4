@@ -9,7 +9,6 @@
 */
 
 const path = require('path');
-
 module.exports = [
   {
     output: { // Transpiled and bundled output gets put in `build/bundle.js`.
