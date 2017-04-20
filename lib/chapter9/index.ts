@@ -1,6 +1,5 @@
 import {sankey, SankeyLink, SankeyNode, SankeyData } from 'd3-sankey';
 import * as d3 from 'd3';
-import 'whatwg-fetch';
 import chartFactory from '../common/index';
 
 const chart = chartFactory({
