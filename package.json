@@ -4,7 +4,7 @@
   "description": "",
   "main": "lib/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "webpack --module-bind 'mocha-loader!./lib/chapter9/index.spec.js' --config webpack.test.config.js",
     "lint": "eslint lib/",
     "server": "webpack && node build/server.js",
     "start": "webpack-dev-server --inline",
@@ -43,7 +43,7 @@
     "ts-loader": "^2.0.3",
     "typescript": "^2.2.2",
     "webpack": "^2.2.0",
-    "webpack-dev-server": "^2.1.0-beta.11"
+    "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
     "@types/d3": "^4.5.0",
@@ -52,7 +52,7 @@
     "@types/node": "^7.0.5",
     "axios": "^0.15.3",
     "canvas-prebuilt": "^1.6.0",
-    "d3": "^4.2.2",
+    "d3": "^4.8.0",
     "d3-dsv": "^1.0.3",
     "d3-sankey": "^0.4.1",
     "d3-svg-legend": "^2.19.0",
@@ -63,7 +63,6 @@
     "rxjs": "^5.0.0-rc.4",
     "sentiment": "^3.0.0",
     "topojson": "^2.0.0",
-    "topojson-client": "^2.1.0",
     "webpack-dev-server": "^2.3.0"
   }
 }
