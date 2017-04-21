@@ -4,7 +4,7 @@
   "description": "",
   "main": "lib/main.js",
   "scripts": {
-    "test": "webpack --module-bind 'mocha-loader!./lib/chapter9/index.spec.js' --config webpack.test.config.js",
+    "test": "webpack --module-bind 'mocha-loader!./lib/chapter9/index.spec.js' --config webpack.test.config.js ./lib/chapter9/index.ts",
     "lint": "eslint lib/",
     "server": "webpack && node build/server.js",
     "start": "webpack-dev-server --inline",

@@ -3,7 +3,6 @@
  * @see http://www.electoralcalculus.co.uk/flatfile.html
  */
 
-import * as topojson from 'topojson-client';
 import * as d3 from 'd3';
 import * as _ from 'lodash';
 import { SankeyLink, SankeyNode, SankeyData } from 'd3-sankey';
@@ -95,54 +94,3 @@ async function generateData() {
 
 
 generateData();
-
-// async function tschart(useCanvas = false) {
-//   const us = await (await fetch('//unpkg.com/us-atlas@1.0.0/us/10m.json')).json();
-//
-//   if (useCanvas) {
-//     const width = 960;
-//     const height = 600;
-//     const projection = d3.geoAlbersUsa();
-//     const canvas = d3.select(document.body)
-//       .append('canvas')
-//       .attr('width', width)
-//       .attr('height', height)
-//       .node();
-//     const context = canvas.getContext('2d');
-//     const states = topojson.feature(us, us.objects.states);
-//     const path = d3.geoPath().context(context);
-//     context.beginPath();
-//     path(states);
-//     context.stroke();
-//
-//     function redraw() {
-//       context.clearRect(0, 0, width, height);
-//     }
-//   } else {
-//     const width = 960;
-//     const height = 600;
-//     const path = d3.geoPath();
-//     const chart = d3.select(document.body)
-//       .append('svg')
-//       .attr('width', width)
-//       .attr('height', height);
-//
-//
-//     const states = chart
-//       .datum(topojson.feature(us, us.objects.states))
-//       .append('path')
-//       .attr('stroke', 'tomato')
-//       .attr('fill', 'none')
-//       .attr('d', path);
-//
-//     const centroids = us.objects.states.features.map(d => path(d).centroid());
-//     const tree = d3.quadtree(centroids, path.x, path.y)
-//       .extent([
-//         [0, 0],
-//         [width, height],
-//     ]);
-//   }
-// };
-//
-// tschart(true);
-// export default tschart;
